@@ -4,6 +4,6 @@ Description of this prediction method and its computation details can be found i
 
 Chen, Le-Yu and Lee, Sokbae (November 2017), "Best Subset Binary Prediction". 
 
-This paper is forthcoming at Journal of Econometrics. The latest version of the paper can be found in this repository. 
+The paper has been published at Journal of Econometrics. See https://www.sciencedirect.com/science/article/pii/S0304407618300770. The latest working paper version of this work can be found in this repository. 
 
 The matlab function max_score_constr_fn can be used to compute the the best subset maximum score prediction rule via the mixed integer optimization (MIO) approach. A warm-start strategy based on refining the input parameter space can be employed to improve the MIO computational performance. The matlab function warm_start_max_score implements this warm-start strategy. These codes require the matlab version of the Gurobi solver for solving the MIO problems. The Gurobi solver is freely available for academic purposes.
