@@ -1,8 +1,8 @@
 # Best-Subset-Binary-Prediction
-Matlab implementation of the best subset maximum score binary prediction method proposed by Chen and Lee (2017).
+Matlab implementation of the best subset maximum score binary prediction method proposed by Chen and Lee (2018).
 Description of this prediction method and its computation details can be found in the paper:
 
-Chen, Le-Yu and Lee, Sokbae (November 2017), "Best Subset Binary Prediction". 
+Chen, Le-Yu and Lee, Sokbae (2018), "Best Subset Binary Prediction". 
 
 The paper has been published at Journal of Econometrics. See https://www.sciencedirect.com/science/article/pii/S0304407618300770. The latest working paper version of this work can be found in this repository. 
 
