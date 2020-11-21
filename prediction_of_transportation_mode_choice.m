@@ -63,5 +63,5 @@ end
 disp('parameter estimates:');
 disp(bhat);
 disp('avg_score gap time node_count');
-disp([score gap rtime ncount]);
+disp([score/n_tr gap/n_tr rtime ncount]);
 

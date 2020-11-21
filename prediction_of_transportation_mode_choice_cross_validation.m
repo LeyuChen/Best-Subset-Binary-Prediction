@@ -34,7 +34,11 @@ beta0=1;
 b=10; % bound value
 time_limit = 86400; % set the MIO solver time limit
 
-bhat=zeros(10,fold);
+if series_exp == 1
+	bhat=zeros(10,fold); % 10 covariates in total
+else
+	bhat=zeros(4,fold); % 4 covariates in total
+end
     
 score=zeros(fold,1);
 gap=zeros(fold,1);
@@ -75,7 +79,7 @@ d=size(x_aux,2);
 bnd=[-b*ones(k-1+d,1) b*ones(k-1+d,1)]; % set the initial parameter bounds
 
 tol = floor(sqrt(log(n_tr)*n_tr)/2);
-disp(['tolerance level: ', num2str(tol)]);
+disp(['tolerance level: ', num2str(tol/n_tr)]);
 
 if warm_start == 1 % warm start MIO
 [bhat(:,i),score(i),gap(i),rtime(i),ncount(i)]  = warm_start_max_score(Y_tr,x_foc,x_aux,beta0,q,time_limit,tol,bnd,mio,tau);
@@ -89,8 +93,7 @@ disp(['gurobi score: ',num2str(score(i))]);
 disp(['gurobi absolute gap: ',num2str(gap(i))]);
 disp(['gurobi running time: ',num2str(rtime(i))]);
 disp(['gurobi node count: ',num2str(ncount(i))]);
-in_score(i)=sum(Y_tr==([x_foc x_aux]*[1;bhat(:,i)]>0));
-disp(['in-sample score: ',num2str(in_score(i))]);
+disp(['in-sample score: ',num2str(score(i)/n_tr)]);
 
 % validation sample
 
@@ -120,11 +123,11 @@ disp(['out-of-sample performance: ',num2str(p_ratio(i))]);
 end
 disp('average coefficient vector: ');
 disp(mean(bhat,2)');
-disp(['average score: ',num2str(mean(score))]);
-disp(['average gap: ',num2str(mean(gap))]);
+disp(['average score: ',num2str(mean(score)/n_tr)]);
+disp(['average gap: ',num2str(mean(gap)/n_tr)]);
 disp(['average running time: ',num2str(mean(rtime))]);
 disp(['average node count: ',num2str(mean(ncount))]);
-disp(['average in-sample score: ',num2str(mean(in_score))]);
+disp(['average in-sample score: ',num2str(mean(in_score)/n_tr)]);
 disp(['average out-of-sample performance: ',num2str(mean(p_ratio))]);
 
 
